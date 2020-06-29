@@ -9,7 +9,7 @@ el servicio recibe una orden de compra y realiza las siguientes acciones:
 
 
 Para correr el servicio se deben seguir las siguientes instrucciones: 
-1. Descargar los repositorios: hiberus-config-server, hiberus-client-service, hiberus-bill-service, hiberus-logistic-service y  hiberus-checkout-service.
+1. Descargar los repositorios: hiberus-commons-service, hiberus-config-server, hiberus-client-service, hiberus-bill-service, hiberus-logistic-service y  hiberus-checkout-service.
 3. Antes de obtener las imagenes de docker de los servicios es necesario correr una base de datos mysql 
 para los servicios, para ello en ese caso se propone usar un imagen docker y correr el siguiente comando:
 sudo docker run -p 3306:3306 --name hiberus -e MYSQL_ROOT_PASSWORD=P4ssW0rdH1b3rus -d mysql:5.7.5
