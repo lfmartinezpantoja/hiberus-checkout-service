@@ -16,6 +16,8 @@ sudo docker run -p 3306:3306 --name hiberus -e MYSQL_ROOT_PASSWORD=P4ssW0rdH1b3r
 Los servicios estan configurados en el hiberus-config-server usando el usuario root y  la constraseña anterior.
 2. Los servicios poseen un puglin de docker que permite obtenerla imagen de cada uno de los servicios bajo el estandar:  
 hiberus/{nombre-servicio}:0.0.1-SNAPSHOT, para ello se debe ejecutar mvn clean install en cada proyecto.
+Cabe destacar que para correr y/o obtener la imagen de cada servicio es necesario que el servicio hiberus-config-server este corriendo.
+Por ello siempre debe ser el primer servicio en ejecutarse.
 4. Una vez obtenidas todas la imagenes de docker se debe corre cada una de las imagenes de la siguiente manera:
 docker run -d -p {portService}:{portService}  hiberus/{nombre-servicio}:0.0.1-SNAPSHOT
 donde portService es el puerto de cada uno de los servicios definidos en el hiberus-config-server
