@@ -1,29 +1,29 @@
 # hiberus-checkout-service
 
-Este servicio es el encargado de la administración de ordenes de compra, el servicio y los servicios usados por 
-este fueron desarrollados usando java 1.8, maven y el framework spring boot en su version 2.3.1, 
-el servicio recibe una orden de compra y realiza las siguientes acciones:
-1. valida si el cliente existe usando el servicio hiberus-client-service
-2. realiza el calculo del  monto total a pagar  y el total de productos usando el servicio hiberus-bill-service.
-3. realiza la lgoisitica necesaria de la orden de compra 
+This service is in charge of the administration of purchase orders, the service and the services used by these 
+were developed using java 1.8, maven and the spring boot framework in version 2.3.1,
+The service receives a purchase order and performs the following actions:
+1. validate if the client exists using the hiberus-client-service
+2. calculates the total amount to pay and the total products using the hiberus-bill-service.
+3. complete the necessary documentation of the purchase order
 
 
-Para correr el servicio se deben seguir las siguientes instrucciones: 
-1. Descargar los repositorios: hiberus-commons-service, hiberus-config-server, hiberus-client-service, hiberus-bill-service, hiberus-logistic-service y  hiberus-checkout-service, hay un repositorio opcional llamado hiberus-files que contiene la coleccion de postman para crear cliente y enviar petición checkout, ademas de un script para crear la base de datos necesaria.
-3. Antes de obtener las imagenes de docker de los servicios es necesario correr una base de datos mysql 
-para los servicios, para ello en ese caso se propone usar un imagen docker y correr el siguiente comando:
-sudo docker run -p 3306:3306 --name hiberus -e MYSQL_ROOT_PASSWORD=P4ssW0rdH1b3rus -d mysql:5.7.5
-Los servicios estan configurados en el hiberus-config-server usando el usuario root y  la constraseña anterior.
-2. Los servicios poseen un puglin de docker que permite obtenerla imagen de cada uno de los servicios bajo el estandar:  
-hiberus/{nombre-servicio}:0.0.1-SNAPSHOT, para ello se debe ejecutar mvn clean install en cada proyecto.
-Cabe destacar que para correr y/o obtener la imagen de cada servicio es necesario que el servicio hiberus-config-server este corriendo.
-Por ello siempre debe ser el primer servicio en ejecutarse.
-4. Una vez obtenidas todas la imagenes de docker se debe corre cada una de las imagenes de la siguiente manera:
-docker run -d -p {portService}:{portService}  hiberus/{nombre-servicio}:0.0.1-SNAPSHOT
-donde portService es el puerto de cada uno de los servicios definidos en el hiberus-config-server
-5. Para que el servicio funcione adecuadamente se debe usar al menos un cliente existente el la base de datos, 
-para ello se debe usar la colección de postman del repositorio hiberus-files, ahí se encuentra la peticion client ,
-la cual crea un cliente el cual servira para posteriormente ejecutar la peticion checkout.
-
-
-
+To run the service, the following instructions must be followed:
+1. Download the repositories: hiberus-commons-service, hiberus-config-server, hiberus-client-service,
+hiberus-bill-service, hiberus-logistic-service and hiberus-checkout-service, there is an optional repository
+called hiberus-files that contains the postman collection to create a client and send a checkout request, in addition 
+to a script to create the necessary database.
+3. Before obtaining the docker images of the services, it is necessary to run a mysql database
+for services, for this in this case it is proposed to use a docker image and run the following command:
+sudo docker run -p 3306: 3306 --name hiberus -e MYSQL_ROOT_PASSWORD = P4ssW0rdH1b3rus -d mysql: 5.7.5
+The services are configured in the hiberus-config-server using the root user and the previous password.
+2. The services have a docker puglin that allows obtaining the image of each of the services under the standard:
+hiberus / {service-name}: 0.0.1-SNAPSHOT, to do this you must run mvn clean install on each project.
+It should be noted that to run and / or obtain the image of each service, the hiberus-config-server service must be running.
+So it should always be the first service to run.
+4. Once all the docker images have been obtained, each one of the images must be run as follows:
+docker run -d -p {portService}: {portService} hiberus / {service-name}: 0.0.1-SNAPSHOT
+where portService is the port of each of the services defined in the hiberus-config-server
+5. For the service to work properly, at least one existing client must be used in the database,
+for this you must use the postman collection of the hiberus-files repository, there is the client request,
+which creates a client which will serve to later execute the checkout request.
